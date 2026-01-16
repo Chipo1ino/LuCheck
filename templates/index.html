@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuCheck. Pack all the things</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="item item-left">
+            <div class="image-wrapper">
+                <img src="static/OnionBoy2.jpg" alt="LuCheckBoy">
+            </div>
+            <div class="overlay">
+                <h1>LuCheck</h1>
+                <p>Pack all your stuff.</p>
+            </div>
+        </div>
+        <div class="item item-right">
+            <div class="right-block title-block">
+                <h1>LuCheck</h1>
+                <div class="subtitle">Pack your data with ease</div>
+            </div>
+            
+            <div class="right-block archive-name-block">
+                <label class="form-label">
+                    <i class="fas fa-folder"></i> Выберите директорию (Обратите внимание - директория не должна быть пустой)
+                </label>
+                <input type="text" 
+                       class="form-control" 
+                       id="selectedFolder" 
+                       placeholder="No folder selected"
+                       readonly
+                       style="cursor: pointer;">
+                <div class="help-text">
+                    Нажмите, чтобы выбрать директорию с данными для архивации или воспользуйтесь кнопкой ниже
+                </div>
+            </div>
+            <div class="right-block archive-name-block">
+                <label class="form-label">
+                    <i class="fas fa-file-archive"></i> Имя Архива (Переименовывать архив после архивации не рекомендуется)
+                </label>
+                <input type="text" class="form-control" id="archiveName" placeholder="backup.7z">
+            </div>
+            <div class="right-block password-block">
+                <label class="form-label">
+                    <i class="fas fa-lock"></i> Пароль
+                </label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" placeholder="Enter password for encryption">
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="right-block buttons-block">
+                <button class="btn btn-file" id="selectFolderBtn">
+                    <i class="fas fa-folder-open btn-icon"></i>
+                    Выбрать директорию
+                </button>
+                
+                <button class="btn btn-primary" id="createArchiveBtn" disabled>
+                    <i class="fas fa-cogs btn-icon"></i>
+                    Создать архив
+                </button>
+            </div>
+            <div id="statusMessage" class="alert" style="display: none;"></div>
+        </div>
+    </div>
+    <input type="file" id="folderInput" style="display: none;" webkitdirectory directory multiple>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
