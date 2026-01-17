@@ -6,13 +6,14 @@ from pathlib import Path
 from flask import Flask, render_template, request, jsonify, send_file, after_this_request
 from bitward.make_new import new_item_def
 from bitward.find_passwd import find_item_by_username_flexible
+from bitward.config_items import arc_path
 
 app = Flask(__name__)
 
 TEMP_FOLDER = 'temp'
 Path(TEMP_FOLDER).mkdir(exist_ok=True)
 
-SEVEN_ZIP_PATH = r"C:\Program Files\7-Zip\7z.exe"
+SEVEN_ZIP_PATH = arc_path
 
 
 def create_7z_archive(folder_path, archive_name, password=None):
@@ -150,9 +151,5 @@ def download_archive(filename):
 def get_password(filename):
     return f"<p>{find_item_by_username_flexible(filename)}</p>"
 
-def get_something(namearc):
-    return find_item_by_username_flexible(namearc)
-
 if __name__ == '__main__':
     app.run(debug=True, port=1127)
-    get_something("testarc")
